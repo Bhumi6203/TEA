@@ -1,0 +1,364 @@
+<html lang="en">
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>
+   Tea Shop
+  </title>
+  <script src="https://cdn.tailwindcss.com">
+  </script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&amp;display=swap" rel="stylesheet"/>
+  <style>
+   body {
+            font-family: 'Roboto', sans-serif;
+        }
+  </style>
+  <script>
+   document.addEventListener('DOMContentLoaded', function () {
+            const form = document.getElementById('contactForm');
+            form.addEventListener('submit', function (event) {
+                event.preventDefault();
+                const name = document.getElementById('name');
+                const email = document.getElementById('email');
+                const message = document.getElementById('message');
+                let valid = true;
+
+                if (name.value.trim() === '') {
+                    showError(name, 'Name is required');
+                    valid = false;
+                } else {
+                    clearError(name);
+                }
+
+                if (email.value.trim() === '') {
+                    showError(email, 'Email is required');
+                    valid = false;
+                } else if (!validateEmail(email.value.trim())) {
+                    showError(email, 'Email is not valid');
+                    valid = false;
+                } else {
+                    clearError(email);
+                }
+
+                if (message.value.trim() === '') {
+                    showError(message, 'Message is required');
+                    valid = false;
+                } else {
+                    clearError(message);
+                }
+
+                if (valid) {
+                    form.submit();
+                }
+            });
+
+            function showError(input, message) {
+                const formControl = input.parentElement;
+                const errorDisplay = formControl.querySelector('.error-message');
+                errorDisplay.innerText = message;
+                errorDisplay.classList.remove('hidden');
+            }
+
+            function clearError(input) {
+                const formControl = input.parentElement;
+                const errorDisplay = formControl.querySelector('.error-message');
+                errorDisplay.innerText = '';
+                errorDisplay.classList.add('hidden');
+            }
+
+            function validateEmail(email) {
+                const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@(([^<>()[\]\.,;:\s@"]+\.)+[^<>()[\]\.,;:\s@"]{2,})$/i;
+                return re.test(String(email).toLowerCase());
+            }
+        });
+  </script>
+ </head>
+ <body class="bg-gray-100">
+  <header class="bg-green-700 text-white p-4">
+   <div class="container mx-auto flex justify-between items-center">
+    <h1 class="text-2xl font-bold">
+     Tea Shop
+    </h1>
+    <nav>
+     <ul class="flex space-x-4">
+      <li>
+       <a class="hover:underline" href="#">
+        Home
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        Shop
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        About
+       </a>
+      </li>
+      <li>
+       <a class="hover:underline" href="#">
+        Contact
+       </a>
+      </li>
+     </ul>
+    </nav>
+   </div>
+  </header>
+  <main class="container mx-auto mt-8">
+   <section class="text-center mb-12">
+    <h2 class="text-4xl font-bold mb-4">
+     Welcome to Our Tea Shop
+    </h2>
+    <p class="text-lg">
+     Discover the finest teas from around the world.
+    </p>
+   </section>
+   <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A detailed image of green tea leaves" class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/2EevTdNcD6UOMyOPgW3U7eklnpknMZYORlVYyoIzQbbjwecnA.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      Green Tea
+     </h3>
+     <p class="mt-2">
+      A refreshing and healthy tea with a delicate flavor.
+     </p>
+     <p class="mt-2 font-bold">
+      $10.00
+     </p>
+     <button class="mt-4 bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800">
+      Add to Cart
+     </button>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A detailed image of black tea leaves" class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/KZbgvfiu8GRDaSHHfA7zOjvfRQ7cBLLDfEGBhDlqEe0oE2zdC.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      Black Tea
+     </h3>
+     <p class="mt-2">
+      A strong and robust tea with a rich flavor.
+     </p>
+     <p class="mt-2 font-bold">
+      $12.00
+     </p>
+     <button class="mt-4 bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800">
+      Add to Cart
+     </button>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A detailed image of oolong tea leaves" class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/zwAyvV249HL5H5rJbfQSYfEQI8PYyrISe1UTcO2tfv4KC75OB.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      Oolong Tea
+     </h3>
+     <p class="mt-2">
+      A traditional Chinese tea with a unique flavor.
+     </p>
+     <p class="mt-2 font-bold">
+      $15.00
+     </p>
+     <button class="mt-4 bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800">
+      Add to Cart
+     </button>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A detailed image of white tea leaves" class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/iaAtALJgGoJ4CVhrCGyVjzdGUt8AvjCLH5f5McfOTkKdwecnA.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      White Tea
+     </h3>
+     <p class="mt-2">
+      A delicate and sweet tea with a light flavor.
+     </p>
+     <p class="mt-2 font-bold">
+      $18.00
+     </p>
+     <button class="mt-4 bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800">
+      Add to Cart
+     </button>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A detailed image of herbal tea leaves" class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/oZT1Rt9KtqpeciWofNNeHHPeqilcDenvPpBcCzxNpnDzD2zdC.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      Herbal Tea
+     </h3>
+     <p class="mt-2">
+      A caffeine-free tea with a variety of flavors.
+     </p>
+     <p class="mt-2 font-bold">
+      $8.00
+     </p>
+     <button class="mt-4 bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800">
+      Add to Cart
+     </button>
+    </div>
+    <div class="bg-white p-6 rounded-lg shadow-lg">
+     <img alt="A detailed image of matcha tea powder" class="w-full h-48 object-cover rounded-t-lg" height="200" src="https://storage.googleapis.com/a1aa/image/uyjeQT9yVcVOdKwGzNe4RZrCiDzV3E109zeHzHNMHRVAh9cnA.jpg" width="300"/>
+     <h3 class="text-xl font-bold mt-4">
+      Matcha Tea
+     </h3>
+     <p class="mt-2">
+      A finely ground green tea powder with a rich flavor.
+     </p>
+     <p class="mt-2 font-bold">
+      $20.00
+     </p>
+     <button class="mt-4 bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800">
+      Add to Cart
+     </button>
+    </div>
+   </section>
+   <section class="mt-12">
+    <h2 class="text-3xl font-bold text-center mb-8">
+     Tea Ratings and Prices
+    </h2>
+    <div class="overflow-x-auto">
+     <table class="min-w-full bg-white">
+      <thead>
+       <tr>
+        <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-tight">
+         Tea
+        </th>
+        <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-tight">
+         Rating
+        </th>
+        <th class="py-2 px-4 border-b-2 border-gray-300 text-left leading-tight">
+         Price
+        </th>
+       </tr>
+      </thead>
+      <tbody>
+       <tr>
+        <td class="py-2 px-4 border-b border-gray-300">
+         Green Tea
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         4.5/5
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         $10.00
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b border-gray-300">
+         Black Tea
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         4.7/5
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         $12.00
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b border-gray-300">
+         Oolong Tea
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         4.6/5
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         $15.00
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b border-gray-300">
+         White Tea
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         4.8/5
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         $18.00
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b border-gray-300">
+         Herbal Tea
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         4.3/5
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         $8.00
+        </td>
+       </tr>
+       <tr>
+        <td class="py-2 px-4 border-b border-gray-300">
+         Matcha Tea
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         4.9/5
+        </td>
+        <td class="py-2 px-4 border-b border-gray-300">
+         $20.00
+        </td>
+       </tr>
+      </tbody>
+     </table>
+    </div>
+   </section>
+   <section class="mt-12">
+    <h2 class="text-3xl font-bold text-center mb-8">
+     Contact Us
+    </h2>
+    <form class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg" id="contactForm">
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="name">
+       Name
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="name" name="name" type="text"/>
+      <p class="text-red-500 text-xs italic error-message hidden">
+      </p>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="email">
+       Email
+      </label>
+      <input class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="email" name="email" type="email"/>
+      <p class="text-red-500 text-xs italic error-message hidden">
+      </p>
+     </div>
+     <div class="mb-4">
+      <label class="block text-gray-700 text-sm font-bold mb-2" for="message">
+       Message
+      </label>
+      <textarea class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" id="message" name="message" rows="4">
+      </textarea>
+      <p class="text-red-500 text-xs italic error-message hidden">
+      </p>
+     </div>
+     <div class="flex items-center justify-between">
+      <button class="bg-green-700 text-white py-2 px-4 rounded hover:bg-green-800 focus:outline-none focus:shadow-outline" type="submit">
+       Send Message
+      </button>
+     </div>
+    </form>
+   </section>
+  </main>
+  <footer class="bg-green-700 text-white p-4 mt-12">
+   <div class="container mx-auto text-center">
+    <p>
+     © 2023 Tea Shop. All rights reserved.
+    </p>
+    <div class="flex justify-center space-x-4 mt-4">
+     <a class="hover:text-gray-300" href="#">
+      <i class="fab fa-facebook-f">
+      </i>
+     </a>
+     <a class="hover:text-gray-300" href="#">
+      <i class="fab fa-twitter">
+      </i>
+     </a>
+     <a class="hover:text-gray-300" href="#">
+      <i class="fab fa-instagram">
+      </i>
+     </a>
+     <a class="hover:text-gray-300" href="#">
+      <i class="fab fa-linkedin-in">
+      </i>
+     </a>
+    </div>
+   </div>
+  </footer>
+ </body>
+</html>
